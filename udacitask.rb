@@ -3,10 +3,10 @@ require_relative 'todolist.rb'
 # Creates a new todo list
 list = TodoList.new("Todo")
 # Add four new items
-list.add_new_item("Submit the rest of the Ruby projects", "02/28/2015")
-list.add_new_item("Submit project 2-3 of FE", "02/28/2016")
-list.add_new_item("Submit Capstone", "03/03/2016")
-list.add_new_item("Do other awesome projects", "03/28/2016")
+list.add_new_item("Submit the rest of the Ruby projects", "2016-03-03")
+list.add_new_item("Submit project 2-3 of FE", "2016-03-03")
+list.add_new_item("Submit Capstone", "2016-03-03")
+list.add_new_item("Do other awesome projects", "2016-03-03")
 list.load_from_file
 # Print the list
 list.output!

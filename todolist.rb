@@ -23,10 +23,10 @@ class TodoList
     end
     file = File.read(@file)
     item_array = get_parsed_json
-    puts item_array
     unless item_array == nil
       item_array.each do |item|
-        date = item["due_date"].as_date
+        puts item["due_date"]
+        date = item["due_date"]
         item = Item.new(item["description"], date, item["completion_status"])
         @items << item
       end
@@ -70,7 +70,7 @@ class TodoList
     @items.each_with_index do |item, index|
       output << "#{index + 1} - #{item.description}\n"
       output << "Status: #{item.is_complete? ? "Complete" : "Not Complete"}\n"
-      output << "Due Date: #{item.due_date.as_string}}\n"
+      output << "Due Date: #{item.due_date.as_string}\n"
       output << "Overdue: #{item.is_overdue? ? "Yes" : "No"}\n\n"
     end
     output_to_file!(output)
@@ -87,7 +87,6 @@ class Item
   def initialize(item_description, due_date, completion_status = false)
     @description = item_description
     @completion_status = completion_status
-    date = DateTime.new
     @due_date = due_date.as_date
   end
 
@@ -106,7 +105,7 @@ class Item
 
   def is_overdue?
     now = DateTime.now
-    return @due_date > now
+    return @due_date < now
   end
 end
 
@@ -114,14 +113,14 @@ end
   # It is not actually mutating, but just handling the translation
   # From dates to string.  I need to learn more about type safety in Ruby and
   # Would love to hear some strategies you use for error handling.
-class DateTime
+class Date
   def as_string
-    return DateTime.parse(self.to_s).strftime("%m/%d/%Y")
+    return self.strftime("%Y-%m-%d")
   end
 end
 
 class String
   def as_date
-    return DateTime.strptime(self, "%m/%d/%Y")
+    return Date.strptime(self, "%Y-%m-%d")
   end
 end
