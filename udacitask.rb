@@ -9,7 +9,7 @@ list = TodoList.new("Todo")
 list.load_from_file
 
 # Add four new items
-list.add_new_item("Get a job")
+list.add_new_item("Get a job", "2016-03-03")
 list.add_new_item("Do the dishes", "2015-03-20")
 list.add_new_item("Submit this project", "2015-02-27")
 list.add_new_item("Do other awesome projects", "2016-03-03")
@@ -47,5 +47,5 @@ list.print
 list.output_to_file!
 puts ">>> Outputting to file..."
 sleep(1)
-puts ">>> File Saved!  Have a nice day :)..."
+puts ">>> File Saved! Hooray!  Have a nice day :)..."
 sleep(1)
