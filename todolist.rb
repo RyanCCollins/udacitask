@@ -11,8 +11,8 @@ class TodoList
     @file = @title + ".json"
   end
 
-  def add_new_item(new_item)
-    item = Item.new(new_item)
+  def add_new_item(new_item, *due_date)
+    item = Item.new(new_item, due_date)
     @items << item
   end
 
@@ -72,6 +72,7 @@ class Item
     @description = item_description
     @completion_status = completion_status
     @due_date = due_date
+    puts due_date
   end
 
   def update_status!(complete)
@@ -88,7 +89,7 @@ class Item
   end
 
   def is_overdue?
-    now = Time.now.to_date
-    return @due_date < now
+    now = Time.now.to_date()
+    return @due_date > now
   end
 end
