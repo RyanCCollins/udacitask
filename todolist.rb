@@ -6,19 +6,23 @@ class TodoList
   attr_reader :items
 
   def initialize(list_title)
+    # Initialize our instance variables
     @title = list_title
     @items = Array.new
-    @file = @title + ".json"
+    # Will name the file with the Todos.json title
+    @file = "todo.json"
   end
 
+  # Push a new item onto the items array
   def add_new_item(new_item, due_date)
     item = Item.new(new_item, due_date)
     @items << item
   end
 
+  # Parse JSON from the Todo.json file
   def load_from_file
     # Protects against the file being empty
-    if File.zero?(@file)
+    if File.zero?(@file) || File.exists?(@file) == false
       return
     end
     file = File.read(@file)
