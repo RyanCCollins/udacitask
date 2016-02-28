@@ -1,1 +1,0 @@
-"My Todo List\n---------\n1 - Finish Front End ND\nStatus: Completed\nDue Date: 2016-02-28\nOverdue: No\n\n2 - Finish Ruby / Rails Track\nStatus: Not Completed\nDue Date: 2016-02-28\nOverdue: No\n\n"

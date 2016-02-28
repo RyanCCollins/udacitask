@@ -8,7 +8,7 @@ class TodoList
   def initialize(list_title)
     @title = list_title
     @items = Array.new
-    @file = @title + ".txt"
+    @file = @title + ".json"
   end
 
   def add_new_item(new_item)
@@ -19,7 +19,7 @@ class TodoList
   def output_to_file!(output)
     File.new(@file, 'w+')
     File.open(@file, 'w') do |file|
-      file.write(output.to_json)
+      file.write(items_to_json)
     end
   end
 
@@ -27,8 +27,12 @@ class TodoList
     @items.delete_at(index)
   end
 
-  def generate_json
-    puts @items.to_a.to_json
+  def items_to_json
+    array = Array.new
+    @items.each do |item|
+      array << item.hash_me
+    end
+    return array.to_json
   end
 
   def change_status(index, status)
