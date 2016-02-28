@@ -9,7 +9,7 @@ class TodoList
     # Initialize our instance variables
     @title = list_title
     @items = Array.new
-    # Will name the file with the Todos.json title
+    # Will name the file with the todos.json title
     @file = "todo.json"
   end
 
@@ -21,11 +21,13 @@ class TodoList
 
   # Parse JSON from the Todo.json file
   def load_from_file
-    # Protects against the file being empty
+    # Protects against the file being empty or nonexistant
     if File.zero?(@file) || File.exists?(@file) == false
       return
     end
     file = File.read(@file)
+
+    # Get the parsed JSON from the file and protect against a nil object
     item_array = get_parsed_json
     unless item_array == nil
       item_array.each do |item|
@@ -36,6 +38,10 @@ class TodoList
     end
   end
 
+  # Return the parsed JSON, or nothing if there is an exception
+    # We could set some kind of debug mode if there is a parsing error,
+    # But for now, I am leaving it be.  It will just return nil, no error even though
+    # Rescue could be called from a parsing error.
   def get_parsed_json
     file = File.read(@file)
     return JSON.parse(file)
@@ -43,6 +49,7 @@ class TodoList
     return nil
   end
 
+  # Create a JSON Hash from each item
   def items_to_json
     array = Array.new
     @items.each do |item|
@@ -51,6 +58,7 @@ class TodoList
     return array.to_json
   end
 
+  # Output to the file in JSON format
   def output_to_file!
     File.new(@file, 'w+')
     File.open(@file, 'w') do |file|
@@ -58,14 +66,18 @@ class TodoList
     end
   end
 
+  # Delete an item at a specific index
   def remove_item(index)
     @items.delete_at(index)
   end
 
+  # Takes an index and a status (bool)
+    # and updates the status.
   def change_status(index, status)
     @items[index].update_status!(status)
   end
 
+  # Compile output for the terminal
   def output
     output = ""
     output << @title
@@ -82,31 +94,35 @@ end
 
 class Item
   attr_reader :description, :due_date
-  attr_accessor :completion_status
+  attr_accessor :completed
 
   # Initialize with variables.  Due_date MUST be a string.
     # Normall
-  def initialize(item_description, due_date = Date.now, completion_status = false)
+  def initialize(item_description, due_date = Date.now, completed = false)
     @description = item_description
-    @completion_status = completion_status
+    @completed = completed
     @due_date = due_date.as_date
   end
 
   def update_status!(complete)
-    @completion_status = complete
+    @completed = complete
   end
 
   def hash_me # Similiar to the common coloquial beer me, the hash me gives you a hash
-    item_hash = { :description => @description, :completion_status => @completion_status == "Complete" ? true : false, :due_date => @due_date }
+    item_hash = { :description => @description, :completion_status => @completed, :due_date => @due_date }
     return item_hash
   end
 
+  # Normally, I would not see the point of a boolean
+    # method like this, but it's a requirement.
   def is_complete?
-    return self.completion_status
+    return self.completed
   end
 
+  # Returns whether the item is overdue based on due_date and date today
+    # We would probably want to get more specific for this with a DateTime.
   def is_overdue?
-    now = DateTime.now
+    now = Date.today
     return @due_date < now
   end
 end

@@ -31,7 +31,7 @@ puts list.output
 # Update the completion status of the first item to complete
 sleep(0.5)
 puts ">>> Marking item 1 complete..."
-list.change_status(0, 'Complete')
+list.change_status(0, true)
 # Print the list
 sleep(2)
 puts list.output
