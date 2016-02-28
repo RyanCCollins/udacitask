@@ -1,3 +1,15 @@
+commit ef11645c492b79608655f134a9e1415755853012
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:49:20 2016 -0500
+
+    Fix: add comment explaining the attr_reader for completed
+
+commit 8aa7bcf368d7ef1f3fa5559fbac338f0747e8f87
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:48:00 2016 -0500
+
+    Chore: update log.txt with commits
+
 commit f435a087e4d5cd5597e36391d9127a899b235e35
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 15:47:21 2016 -0500
