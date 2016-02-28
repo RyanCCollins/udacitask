@@ -1,0 +1,5 @@
+commit 033108d9e12998200e2588b4f59ef333e5138fc3
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 01:44:53 2016 -0500
+
+    Feat: add basic outline to specs for project

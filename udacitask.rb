@@ -25,3 +25,4 @@ list.output!
 list.title = "My Todo List"
 # Print the list
 list.output!
+list.generate_json
