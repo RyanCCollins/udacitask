@@ -25,7 +25,6 @@ class TodoList
     item_array = get_parsed_json
     unless item_array == nil
       item_array.each do |item|
-        puts item["due_date"]
         date = item["due_date"]
         item = Item.new(item["description"], date, item["completion_status"])
         @items << item
@@ -84,7 +83,7 @@ class Item
 
   # Initialize with variables.  Due_date MUST be a string.
     # Normall
-  def initialize(item_description, due_date, completion_status = false)
+  def initialize(item_description, due_date = Date.now, completion_status = false)
     @description = item_description
     @completion_status = completion_status
     @due_date = due_date.as_date
