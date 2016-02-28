@@ -6,10 +6,10 @@ class TodoList
   attr_reader :items
 
   def initialize(list_title)
-    # Initialize our instance variables
+    # Initialize our instance variables and create an items array
     @title = list_title
     @items = Array.new
-    # Will name the file with the todos.json title
+    # Will name the file with the todo.json title
     @file = "todo.json"
   end
 
@@ -25,14 +25,18 @@ class TodoList
     if File.zero?(@file) || File.exists?(@file) == false
       return
     end
-    file = File.read(@file)
 
+    # Read the file from the @file name parse the list and load it as @items
+    file = File.read(@file)
     # Get the parsed JSON from the file and protect against a nil object
     item_array = get_parsed_json
     unless item_array == nil
       item_array.each do |item|
         date = item["due_date"]
         item = Item.new(item["description"], date, item["completed"])
+        # We are just assuming the items will be loaded when they are needed
+          # And are pushing them onto the array instead of intelligently
+          # sorting the list.
         @items << item
       end
     end

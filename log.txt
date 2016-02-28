@@ -1,3 +1,9 @@
+commit d6f3236c123978ad5565dcb9a17f0a869126fa87
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:30:46 2016 -0500
+
+    Feat: refactor so that item compiles it's own output
+
 commit 06a014d62d404fb33142e6208d61f203af7db62b
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 15:22:11 2016 -0500
