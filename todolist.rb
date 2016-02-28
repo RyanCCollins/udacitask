@@ -32,7 +32,7 @@ class TodoList
     unless item_array == nil
       item_array.each do |item|
         date = item["due_date"]
-        item = Item.new(item["description"], date, item["completion_status"])
+        item = Item.new(item["description"], date, item["completed"])
         @items << item
       end
     end
@@ -77,8 +77,13 @@ class TodoList
     @items[index].update_status!(status)
   end
 
+  #Convenience for print via the compiled output
+  def print
+    puts compile_output
+  end
+
   # Compile output for the terminal
-  def output
+  def compile_output
     output = ""
     output << @title
     output << "\n---------\n"
@@ -109,7 +114,7 @@ class Item
   end
 
   def hash_me # Similiar to the common coloquial beer me, the hash me gives you a hash
-    item_hash = { :description => @description, :completion_status => @completed, :due_date => @due_date }
+    item_hash = { :description => @description, :completed => @completed, :due_date => @due_date }
     return item_hash
   end
 

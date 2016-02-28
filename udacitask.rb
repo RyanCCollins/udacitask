@@ -15,33 +15,33 @@ list.add_new_item("Submit this project", "2015-02-27")
 list.add_new_item("Do other awesome projects", "2016-03-03")
 
 # Print the list
-puts list.output
+list.print
 # Delete the first item
 puts ">>> Removing item 1..."
 list.remove_item(0)
 # Print the list
 sleep(2)
-puts list.output
+list.print
 # Delete the second item
 puts ">>> Removing item 1..."
 list.remove_item(0)
 # Print the list
 sleep(2)
-puts list.output
+list.print
 # Update the completion status of the first item to complete
 sleep(0.5)
 puts ">>> Marking item 1 complete..."
 list.change_status(0, true)
 # Print the list
 sleep(2)
-puts list.output
+list.print
 # Update the title of the list
 sleep(0.5)
 puts ">>> Updating title..."
 list.title = "My New Todo List"
 # Print the list
 sleep(2)
-puts list.output
+list.print
 
 # Save the new list to file and simulate a delay
 list.output_to_file!
