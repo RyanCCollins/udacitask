@@ -1,7 +1,7 @@
 Extra Features Added
 
 The extra features that I added are as follows
-1. A due date can be passed into the Item class.  Note: the due date defaults to the current time if no date is passed.
+1. A due date can be passed into the Item class.
 This will also calculate whether the item is overdue.
 2. Generate a JSON object with the contents of the todolist
 3. Load the todo list with JSON.  We are web developers, right?
