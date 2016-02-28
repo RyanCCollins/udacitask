@@ -47,7 +47,7 @@ class TodoList
     return array.to_json
   end
 
-  def output_to_file!(output)
+  def output_to_file!
     File.new(@file, 'w+')
     File.open(@file, 'w') do |file|
       file.write(items_to_json)
@@ -62,7 +62,7 @@ class TodoList
     @items[index].update_status!(status)
   end
 
-  def output!
+  def output
     output = ""
     output << @title
     output << "\n---------\n"
@@ -72,8 +72,7 @@ class TodoList
       output << "Due Date: #{item.due_date.as_string}\n"
       output << "Overdue: #{item.is_overdue? ? "Yes" : "No"}\n\n"
     end
-    output_to_file!(output)
-    puts output
+    return output # I know that we don't need to call output, but I think it makes the intention clear
   end
 end
 

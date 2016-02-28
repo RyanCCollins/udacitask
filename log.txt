@@ -1,3 +1,47 @@
+commit e32c0c2cb4dbb9ce32d70a8deb51e51a3c863d0d
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 14:45:54 2016 -0500
+
+    Feat: add sleep delay when printing list
+
+commit 78e7674425305ae36dc46a1f15de3cb24d0b10b9
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 14:35:27 2016 -0500
+
+    Feat: adding working date time conversion
+
+commit 3a87ca77a5efd8ba3885421f916a7f9a04cd4821
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 14:05:52 2016 -0500
+
+    Feat: add date to string, string to date conversion
+
+commit f3b6b9d0a478ef1c4f8288f891e8c9edd26050c8
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 12:24:40 2016 -0500
+
+    Feat: add ability to track due dates
+
+commit d28db8f85cadb7470d7d5195cff97393bf1f39c1
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 12:12:59 2016 -0500
+
+    Feat: update to load from JSON
+    
+    * The todaylist will now be loaded from JSON if available
+
+commit efa146be4638926b03df83d0a154818a1d9d7b1f
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 02:58:52 2016 -0500
+
+    Feat: add method for outputting to JSON
+
+commit a67dd4fabdfecba3f2f4cad60c7a92630f8d41e1
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 02:51:27 2016 -0500
+
+    Feat: add to JSON method to task
+
 commit 033108d9e12998200e2588b4f59ef333e5138fc3
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 01:44:53 2016 -0500
