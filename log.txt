@@ -1,3 +1,27 @@
+commit 06a014d62d404fb33142e6208d61f203af7db62b
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:22:11 2016 -0500
+
+    Feat: add convenience method for printing
+
+commit 7337b81c241b51a54cc568c52947e3e17027c7f7
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:18:20 2016 -0500
+
+    Fix: add Date.today versus date.now for the check for overdue date
+
+commit e61556c63ab115fcc26c2ca8920dcbd6b3db4759
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:07:43 2016 -0500
+
+    Feat: add protection from non existant file
+
+commit 8d30c71a00ea6ee8e0c8779a672c4322eb9de60b
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 14:52:50 2016 -0500
+
+    Feat: add file saving operation to udacitask.rb
+
 commit e32c0c2cb4dbb9ce32d70a8deb51e51a3c863d0d
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 14:45:54 2016 -0500

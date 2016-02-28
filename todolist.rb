@@ -77,21 +77,19 @@ class TodoList
     @items[index].update_status!(status)
   end
 
-  #Convenience for print via the compiled output
+  #Convenience for printing via the compiled output
   def print
     puts compile_output
   end
 
   # Compile output for the terminal
+    # It is really not clear from the specs which class this should occur in?
   def compile_output
     output = ""
     output << @title
     output << "\n---------\n"
     @items.each_with_index do |item, index|
-      output << "#{index + 1} - #{item.description}\n"
-      output << "Status: #{item.is_complete? ? "Complete" : "Not Complete"}\n"
-      output << "Due Date: #{item.due_date.as_string}\n"
-      output << "Overdue: #{item.is_overdue? ? "Yes" : "No"}\n\n"
+      output << "#{index + 1} - #{item.print_item}\n"
     end
     return output # I know that we don't need to call output, but I think it makes the intention clear
   end
@@ -99,7 +97,7 @@ end
 
 class Item
   attr_reader :description, :due_date
-  attr_accessor :completed
+  attr_accessor :completed # Same as completion_status from the specs, but as a Bool.
 
   # Initialize with variables.  Due_date MUST be a string.
     # Normall
@@ -116,6 +114,16 @@ class Item
   def hash_me # Similiar to the common coloquial beer me, the hash me gives you a hash
     item_hash = { :description => @description, :completed => @completed, :due_date => @due_date }
     return item_hash
+  end
+
+  # It's not totally clear what class should print items
+    # This return output for an item and the TodoList prints it
+  def print_item
+    output = "#{@description}\n"
+    output << "Status: #{is_complete? ? "Complete" : "Not Complete"}\n"
+    output << "Due Date: #{@due_date.as_string}\n"
+    output << "Overdue: #{is_overdue? ? "Yes" : "No"}\n"
+    return output
   end
 
   # Normally, I would not see the point of a boolean
