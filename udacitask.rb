@@ -3,10 +3,11 @@ require_relative 'todolist.rb'
 # Creates a new todo list
 list = TodoList.new("Todo")
 # Add four new items
-list.add_new_item("Finish iOS Capstone")
-list.add_new_item("Get a job")
-list.add_new_item("Finish Front End ND")
-list.add_new_item("Finish Ruby / Rails Track")
+list.add_new_item("Submit the rest of the Ruby projects")
+list.add_new_item("Submit project 2-3 of FE")
+list.add_new_item("Submit Capstone")
+list.add_new_item("Do other awesome projects")
+list.load_from_file()
 # Print the list
 list.output!
 # Delete the first item
