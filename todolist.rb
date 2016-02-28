@@ -134,7 +134,7 @@ class Item
   # Normally, I would not see the point of a boolean
     # method like this, but it's a requirement.
   def is_complete?
-    return self.completed
+    return self.completed # This uses the attr_reader :completed.  Just because :)
   end
 
   # Returns whether the item is overdue based on due_date and date today
