@@ -1,3 +1,15 @@
+commit e44f37e3594634e187aeddf9f1ed11e52fbb3d26
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:51:25 2016 -0500
+
+    Fix: readd the date to add_new_item in todolist.rb
+
+commit e614362f1e7c855c4b0fb08147fc835e8799e203
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:49:53 2016 -0500
+
+    Chore: output log.txt for submission
+
 commit ef11645c492b79608655f134a9e1415755853012
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 15:49:20 2016 -0500
