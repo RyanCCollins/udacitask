@@ -1,3 +1,15 @@
+commit 593c8ce76957c87ba48e14c11e652e37680f1ee1
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:53:48 2016 -0500
+
+    Feat: remove the explanation of optional due date from new_features.txt
+
+commit ff55bd3c024a8be367bc33e02be57fd9097e8b05
+Author: Ryan Collins <rccproductions@mac.com>
+Date:   Sun Feb 28 15:51:52 2016 -0500
+
+    Feat: update log.txt with newer logs
+
 commit e44f37e3594634e187aeddf9f1ed11e52fbb3d26
 Author: Ryan Collins <rccproductions@mac.com>
 Date:   Sun Feb 28 15:51:25 2016 -0500
