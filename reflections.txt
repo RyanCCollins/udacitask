@@ -1,0 +1,13 @@
+# What you added to Udacitask 2.0
+# -------------------------------------------------------
+1. What is the gem of your choice and how did you use it?
+2. Describe the 2 features you added to the project.
+  a) Feature 1...
+  b) Feature 2...
+
+# REFLECTIONS
+# -------------------------------------------------------
+1. How long did you spend working on this project?
+2. What was the most rewarding challenge you conquered?
+3. What two additional features did you build? Why?
+4. Where do you still have room to grow?

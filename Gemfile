@@ -1,0 +1,2 @@
+gem 'udacitask'
+gem 'artii'
