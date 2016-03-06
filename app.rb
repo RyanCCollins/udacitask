@@ -56,6 +56,7 @@ require 'sinatra'
 
 class WebApp < Sinatra::Base
   get '/'  do
+    @list_items = UdaciList.all.select { |item| item.is_a? TodoItem }
     @title = "Udacitask!"
     erb :index
   end

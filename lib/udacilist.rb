@@ -2,6 +2,7 @@ class UdaciList
   attr_reader :title, :items
 
   @@list_types = ["todo", "event", "link"]
+  @@list_items = []
 
   def initialize(options={})
     @title = options[:title] ? options[:title] : "Unknown Title"
@@ -10,11 +11,28 @@ class UdaciList
 
   def add(type, description, options={})
     type = type.downcase
-    # Raise the invalid item type error if the type does not exist
-    raise UdaciListErrors::InvalidItemType if !type_exists? type
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+    # A bit repetitive to push these both onto class and instance vars
+      # But for the purposes of showing a UdaciList.all method, it makes sense
+    @@list_items << construct_item(type, description, options)
+    @items << construct_item(type, description, options)
+  end
+
+  def self.all
+    @@list_items
+  end
+
+  def construct_item type, description, options
+    case type
+    when "todo"
+      return TodoItem.new(description, options)
+    when "event"
+      return EventItem.new(description, options)
+    when "link"
+      return LinkItem.new(description, options)
+    else
+      # Raise the invalid item type error if the type does not exist
+      raise UdaciListErrors::InvalidItemType if !type_exists? type
+    end
   end
 
   def delete(index)
@@ -43,7 +61,7 @@ class UdaciList
       items = @items.select { |item| item.is_a? TodoItem }
     when "link"
       items = @items.select { |item| item.is_a? LinkItem }
-    when "complete"
+    when "complete" # Check for completion
       items = @items.select { |item| item.respond_to?(:is_complete?) && item.is_complete? }
     when "incomplete"
       items = @items.select { |item| item.respond_to?(:is_complete?) && !item.is_complete? }
