@@ -7,11 +7,12 @@
   <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello!  Welcome to UdaciTask!</h1><br>
+<header>
+  <h1>Welcome to UdaciTask 2.0!</h1>
+  <h2>Manage your todo list through this handy web interface.</h2>
+</header>
 <form action="/" method="post">
-  <label for="title">Title:</label>
-  <input type="text" id="title" placeholder="Name it something nice :)" />
-  <label for="item">List Item:</label>
+  <label for="item">Item Description:</label>
   <input type="text" id="item" placeholder="Keep it PG!" />
   <label for="priority">Priority</label>
   <select id="priority">
@@ -23,10 +24,7 @@
   <br>
   <label for="due-date">Due Date:</label>
   <input id="due-date" type="datetime-local">
-  <br>
-  <div class="button">
-    <button type="submit">Add to list</button>
-  </div>
+  <button type="submit">Add to list</button>
 </form>
 
   <div id="main">
@@ -34,7 +32,7 @@
   </div>
 
   <footer>
-    <p><small>By Ryan Collins<a href="http://ryancollins.io">Ryan Collins</a>.</small></p>
+    <p><small>By <a href="http://ryancollins.io">Ryan Collins</a>.</small></p>
   </footer>
 </body>
 </html>

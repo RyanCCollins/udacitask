@@ -17,8 +17,13 @@ class UdaciList
     @items << construct_item(type, description, options)
   end
 
+  # Get one by id from the the list items
+  def self.get_one id
+    return all.find{|item| item.id == id }
+  end
+
   def self.all
-    @@list_items
+    @@list_items.sort_by { |item| item.id } # Sort by item id to give a list by id
   end
 
   def construct_item type, description, options

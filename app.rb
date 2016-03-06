@@ -55,15 +55,32 @@ new_list.filter("event")
 require 'sinatra'
 
 class WebApp < Sinatra::Base
+
+  configure do # Run config to run the app at localhost:80
+    set :bind, '0.0.0.0'
+    set :port, 1337
+  end
+
+
   get '/'  do
     @list_items = UdaciList.all.select { |item| item.is_a? TodoItem }
     @title = "Udacitask!"
     erb :index
   end
 
-  post '/list/new' do
+  post '/' do
     list = UdaciList.new
-    list.add(params[:title], params[:item], due: params[:due_data], priority: params[:priority])
+    item = params[:item]
+    due_date = params[:due_date]
+    priority = params[:priority]
+    list.add("todo", item, due: due_date, priority: priority)
   end
-end
 
+  get '/:id' do
+    @item = UdaciList.get_one params[:id]
+    @title = "Edit item ##{params[:id]}"
+    erb :edit
+  end
+
+end
+WebApp.run!
