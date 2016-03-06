@@ -1,4 +1,6 @@
 module UdaciListErrors
+  class InvalidIDError < StandardError
+  end
 
   class IndexExceedsListSize < StandardError
   end

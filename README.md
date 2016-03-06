@@ -14,6 +14,20 @@ From the commandline, run the following from the root directory
 ruby app.rb
 ```
 
+The terminal will print out the contents of app.rb and then will start the server.  
+
+You will see output that looks like:
+```
+== Sinatra (v1.4.7) has taken the stage on 1337 for development with backup from Puma
+Puma starting in single mode...
+* Version 3.0.2 (ruby 2.2.1-p85), codename: Plethora of Penguin Pinatas
+* Min threads: 0, max threads: 16
+* Environment: development
+* Listening on tcp://0.0.0.0:1337
+```
+
+The webpage can be accessed from [http://localhost:1337](http://localhost:1337) at this point.
+
 ## About
 Built a commandline and Sinatra based web application using Object Oriented Ruby that keeps track of your tasks and helps you to stay organized.  The app parses and reads JSON data and converts it into native Ruby Data structures.  It uses classic Object Oriented Programming in order to intelligently manipulate the data.
 

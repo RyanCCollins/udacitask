@@ -1,6 +1,14 @@
 require 'colorize'
 
 module Listable
+
+  @@next_list_id = 0 # Define the next list id within listable to make sure it is a new id.
+
+  def self.get_next_id
+    @@next_list_id += 1
+    return @@next_list_id
+  end
+
   def format_description(description)
     "#{description}".ljust(30)
   end

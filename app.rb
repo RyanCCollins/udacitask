@@ -77,10 +77,23 @@ class WebApp < Sinatra::Base
   end
 
   get '/:id' do
-    @item = UdaciList.get_one params[:id]
+    id = params[:id]
+    @item = UdaciList.get_one id
     @title = "Edit item ##{params[:id]}"
     erb :edit
   end
+
+  get '/:id/delete' do
+    @item = UdaciList.get_one params[:id]
+    @title = "Confirm deletion of note ##{params[:id]}"
+    erb :delete
+  end
+
+  delete '/:id' do
+    @item = UdaciList.get_one params[:id]
+    @item.destroy!
+  redirect '/'
+end
 
 end
 WebApp.run!

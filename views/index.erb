@@ -8,7 +8,7 @@
     </p>
     <p class="actions">
       <label><input type="checkbox" id="cbox1" value="first_checkbox"> <a href="/<%= item.id %>/complete">Mark Complete</a></label><br>
-      <button id="delete-button" type="submit">Delete</button>
+      <a href="<%= item.id %>/delete"<button id="delete-button" type="submit">Delete</button></a>
     </p>
     <p class="meta">Due by: <%= item.due != nil ? item.due : "N/A" %></p>
     <p class="meta">Priority: <%= item.priority != nil ? item.priority : "N/A" %></p>

@@ -6,8 +6,8 @@ I used Sinatra as the gem of my choice.  I used it to create a very basic web ap
 In order to get setup with Sinatra, I read the documentation.  I copied a bit of boilerplate CSS from the HTML5 Boilerplate and I created a layout.erb and an index.erb file that contains partials that make up the web app.  The app loads all of the TodoList type entries and it allows the user to add to the list through the form.
 
 2. Describe the 2 features you added to the project.
-  a) Aside from creating a web facing todo list, I also added the ability to edit the todo list from the web application.
-  b) 
+  a) I created a web application that shows the todo list.  I utilized Sinatra to do so.
+  b) I also made the list editable from the web interface.  You can edit, delete and update items from the web interface!  Sweet!
 
 # REFLECTIONS
 # -------------------------------------------------------

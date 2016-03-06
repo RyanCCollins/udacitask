@@ -19,7 +19,7 @@ class UdaciList
 
   # Get one by id from the the list items
   def self.get_one id
-    return all.find{|item| item.id == id }
+    all.detect {|item| item.id == id }
   end
 
   def self.all
@@ -40,7 +40,11 @@ class UdaciList
     end
   end
 
-  def delete(index)
+  def destroy! # Deletes a list item by calling item.destroy
+    @items.delete(self)
+  end
+
+  def delete index # Deletes an item at the given index
     if index_exists? index
       @items.delete_at(index - 1)
     else
