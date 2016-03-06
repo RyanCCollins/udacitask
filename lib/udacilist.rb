@@ -4,7 +4,7 @@ class UdaciList
   @@list_types = ["todo", "event", "link"]
 
   def initialize(options={})
-    @title = options[:title]
+    @title = options[:title] ? options[:title] : "Unknown Title"
     @items = []
   end
 
@@ -33,6 +33,10 @@ class UdaciList
   # Check if the type exists?
   def type_exists? type
      return @@list_types.include? type
+  end
+
+  def header_for_title
+    output = "-"
   end
 
   def all
