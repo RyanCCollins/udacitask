@@ -1,6 +1,4 @@
 module UdaciListErrors
-  class DateArgumentError < ArgumentError
-  end
 
   class IndexExceedsListSize < StandardError
   end

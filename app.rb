@@ -8,7 +8,6 @@ require_relative "lib/udacilist"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
-require_relative "lib/web_app"
 # myapp.rb
 
 
@@ -49,4 +48,21 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+# For fun, we are playing with sinatra
+# When you start the app, load up sinatra
+# And load the index template
+require 'sinatra'
+
+class WebApp < Sinatra::Base
+  get '/'  do
+    @title = "Udacitask!"
+    erb :index
+  end
+
+  post '/list/new' do
+    list = UdaciList.new
+    list.add(params[:title], params[:item], due: params[:due_data], priority: params[:priority])
+  end
+end
 

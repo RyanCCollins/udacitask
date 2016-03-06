@@ -18,7 +18,7 @@ class UdaciList
   end
 
   def delete(index)
-    if index_exists? index # Probable could use valid_index here
+    if index_exists? index
       @items.delete_at(index - 1)
     else
       raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
@@ -26,13 +26,30 @@ class UdaciList
   end
 
   def index_exists? index
-    puts @items.length
     return index < @items.length # Return true if the index is less than the length
   end
 
   # Check if the type exists?
   def type_exists? type
      return @@list_types.include? type
+  end
+
+  def filter filter
+    filter.downcase! # Do what I say!
+    case filter
+    when "event"
+      items = @items.select { |item| item.is_a? EventItem }
+    when "todo"
+      items = @items.select { |item| item.is_a? TodoItem }
+    when "link"
+      items = @items.select { |item| item.is_a? LinkItem }
+    when "complete"
+      items = @items.select { |item| item.respond_to?(:is_complete?) && item.is_complete? }
+    when "incomplete"
+      items = @items.select { |item| item.respond_to?(:is_complete?) && !item.is_complete? }
+    else
+      raise InvalidFilter, "Invalid Filter: #{filter}"
+    end
   end
 
   def header_for_title

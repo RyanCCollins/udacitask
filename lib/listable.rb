@@ -13,13 +13,14 @@ module Listable
   end
 
   def format_priority priority
+    # Set the priority symbols and color
     case priority
     when "high"
-      value = "⇧".red
+      value = " ⇧".red # High Priority shows red up arrow
     when "medium"
-      value = "⇧".yellow
+      value = " ⇨".yellow # Medium priority shows yellow right arrow
     when "low"
-      value = "⇨".blue
+      value = " ⇩".blue # Low priority shows blue down arrow
     when nil
       value = ""
     else
