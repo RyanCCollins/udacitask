@@ -61,39 +61,64 @@ class WebApp < Sinatra::Base
     set :port, 1337
   end
 
-
+  # Get / and load the index template
   get '/'  do
     @list_items = UdaciList.all.select { |item| item.is_a? TodoItem }
-    @title = "Udacitask!"
+    @title = "Udacitask 2.0!"
     erb :index
   end
 
+  # Post a new list item to todo lists
   post '/' do
     list = UdaciList.new
-    item = params[:item]
-    due_date = params[:due_date]
-    priority = params[:priority]
+    item = params["item"]
+    due_date = Date.strptime(params["due_date"])
+    priority = params["priority"]
     list.add("todo", item, due: due_date, priority: priority)
+    redirect '/'
   end
 
+  # Get a list item by id and show the edit template
   get '/:id' do
-    id = params[:id]
-    @item = UdaciList.get_one id
-    @title = "Edit item ##{params[:id]}"
+    @id = params["id"].to_i
+    @item = UdaciList.get_one @id
+    @title = "Edit item ##{@id}"
     erb :edit
   end
 
+  # Get method for delete by id
   get '/:id/delete' do
-    @item = UdaciList.get_one params[:id]
-    @title = "Confirm deletion of note ##{params[:id]}"
+    @id = params["id"].to_i
+    @item = UdaciList.get_one @id
+    @title = "Confirm deletion of note ##{@id}"
     erb :delete
   end
 
+  get '/:id/complete' do
+    @id = params["id"].to_i
+    @item = UdaciList.get_one @id
+
+    # Reverse the completion status
+    @item.complete = !@item.complete
+  end
+
+  # Put method for updating an item
+  put '/:id' do
+    @id = params["id"].to_i
+    @item = UdaciList.get_one @id
+    @item.description = params["description"]
+    @item.complete = params["complete"]
+    redirect '/'
+  end
+
+  # Delete item by ID
   delete '/:id' do
-    @item = UdaciList.get_one params[:id]
+    @id = params["id"].to_i
+    @item = UdaciList.get_one @id
     @item.destroy!
-  redirect '/'
-end
+    redirect '/'
+  end
 
 end
-WebApp.run!
+
+WebApp.run! # Fairly self explanatory!

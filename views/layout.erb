@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf8">
-  <title><%= @title + ' | Udacitask' %></title>
-  <link href="/reset.css" rel="stylesheet">
+  <title><%= @title + ' | by Ryan Collins - Fullstack Developer' %></title>
   <link href="/style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,9 +12,9 @@
 </header>
 <form action="/" method="post">
   <label for="item">Item Description:</label>
-  <input type="text" id="item" placeholder="Keep it PG!" />
+  <input type="text" id="item" name="item" placeholder="Keep it PG!" />
   <label for="priority">Priority</label>
-  <select id="priority">
+  <select id="priority" name="priority">
     <option>Low</option>
     <option>Medium</option>
     <option>High</option>
@@ -23,8 +22,8 @@
   <br>
   <br>
   <label for="due-date">Due Date:</label>
-  <input id="due-date" type="datetime-local">
-  <button type="submit">Add to list</button>
+  <input id="due-date" name="due_date" type="datetime-local">
+  <button type="submit" value="Add to List"></button>
 </form>
 
   <div id="main">

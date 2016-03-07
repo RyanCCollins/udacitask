@@ -1,14 +1,17 @@
 <% @list_items.each_with_index do |item, index| %>
   <article <%= 'class="complete"' if item.complete %>>
     <h1>Item <%= index + 1 %></h1>
-
     <p>
       <%= item.description %>
       <span><a href="/<%= item.id %>">[edit]</a></span>
     </p>
     <p class="actions">
-      <label><input type="checkbox" id="cbox1" value="first_checkbox"> <a href="/<%= item.id %>/complete">Mark Complete</a></label><br>
-      <a href="<%= item.id %>/delete"<button id="delete-button" type="submit">Delete</button></a>
+      <form action="/<%= item.id %>" method="post">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete %>> <a href="/<%= item.id %>/complete">Mark Complete</a></label><br>
+      <a href="<%= item.id %>/delete">
+        <button type="submit" id="delete-button" type="submit">Delete</button>
+      </a>
+      </form>
     </p>
     <p class="meta">Due by: <%= item.due != nil ? item.due : "N/A" %></p>
     <p class="meta">Priority: <%= item.priority != nil ? item.priority : "N/A" %></p>
