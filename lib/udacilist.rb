@@ -1,7 +1,7 @@
 class UdaciList
   attr_reader :title, :items
   # Define the list types for easy reference
-  @@list_types = ["todo", "event", "link"]
+  @@list_types = { todo: TodoItem, link: LinkItem, event: EventItem }
   @@all_items = []
 
   def initialize(options={})
@@ -50,13 +50,10 @@ class UdaciList
     # Takes a type, description and options
     # and returns an object of that type.
   def construct_item type, description, options
-    case type
-    when "todo"
-      return TodoItem.new(description, options)
-    when "event"
-      return EventItem.new(description, options)
-    when "link"
-      return LinkItem.new(description, options)
+    type = type.downcase
+    if type_allowed? type
+      # Add the item to the list by calling the
+      add_item @@list_types[type.to_sym].new description options
     else
       # Raise the invalid item type error if the type does not exist
       raise UdaciListErrors::InvalidItemType if !type_exists? type
@@ -69,7 +66,7 @@ class UdaciList
   def delete item_number
     index = item_number - 1
     if index_exists? index, @items
-      @items.delete_at(index)
+      @items.delete_at index
     else
       raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
     end
@@ -81,8 +78,8 @@ class UdaciList
   end
 
   # Check if the type exists?
-  def type_exists? type
-     return @@list_types.include? type
+  def type_allowed? type
+    return @@list_types.keys.include? type.to_sym
   end
 
   # Filter by type by selecting items from the list based on type

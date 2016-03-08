@@ -53,14 +53,25 @@ new_list.filter("event")
   # To add additional functionality, the web app loads up
   # the todo items and allows you to alter from the web app.
   # That said, the web and commandline applications basically exist seperately
+  # Also, the web application is by no means secure.  It does not have any security
+  # Measures in place for preventing CSRF or any type of XSS or Script injection.
+  # You can clearly alter the program through the form.
 require 'sinatra'
 
 class WebApp < Sinatra::Base
 
-  configure do # Run config to run the app at localhost:80
+  # Run config to run the app at localhost:1337
+  configure do
     set :bind, '0.0.0.0'
     set :port, 1337
     set :method_override, true
+
+  end
+
+  # include utils to prevent xss
+  helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
   end
 
   # Get / and load the index template

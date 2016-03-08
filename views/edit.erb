@@ -1,7 +1,7 @@
 <% if @item %>
   <form action="/<%= @item.id %>" method="post" id="edit">
     <input type="hidden" name="_method" value="put">
-    <textarea name="description"><%= @item.description %></textarea>
+    <textarea name="description"><%= h @item.description %></textarea>
     <input type="submit">
     <label for="complete"><%= "Mark Complete" if !@item.complete %><%= "Mark Incomplete" if @item.complete %></label>
     <input type="checkbox" name="complete" <%= "checked" if @item.complete %>>

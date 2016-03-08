@@ -2,7 +2,7 @@
 <% @list_items.each_with_index do |item, index| %>
   <article <%= 'class="complete"' if item.complete %>>
     <h1>Item <%= index + 1 %></h1>
-    <p><%= item.description %></p>
+    <p><%= h item.description %></p>
       <form class="right-section" action="/<%= item.id %>" method="post">
       <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete %> disabled></label><br>
         <span><a href="/<%= item.id %>/complete">[<%= "un" if item.complete %>check]</a></span><br>
