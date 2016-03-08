@@ -1,20 +1,20 @@
 class UdaciList
   attr_reader :title, :items
-
+  # Define the list types for easy reference
   @@list_types = ["todo", "event", "link"]
-  @@list_items = []
 
   def initialize(options={})
     @title = options[:title] ? options[:title] : "Unknown Title"
     @items = []
   end
 
+  # Push a newly constructed item onto the @items array
   def add(type, description, options={})
     type = type.downcase
-    # A bit repetitive to push these both onto class and instance vars
-      # But for the purposes of showing a UdaciList.all method, it makes sense
-    @@list_items << construct_item(type, description, options)
     @items << construct_item(type, description, options)
+
+    # We want to keep track of all list items from this class var for the web app.
+    add_to_all @items
   end
 
   # Get one by id from the the list items
@@ -23,7 +23,20 @@ class UdaciList
   end
 
   def self.all
-    @@list_items.sort_by { |item| item.id } # Sort by item id to give a list by id
+    @@list_items
+  end
+
+  # Convenience for deleting from the class list
+  def self.delete index
+    if index_exists? index @@list_items
+      @@list_items.delete_at index
+    else
+      raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
+    end
+  end
+
+  def add_to_all items
+    self.all << items
   end
 
   def construct_item type, description, options
@@ -40,20 +53,16 @@ class UdaciList
     end
   end
 
-  def destroy! # Deletes a list item by calling item.destroy
-    @items.delete(self)
-  end
-
   def delete index # Deletes an item at the given index
-    if index_exists? index
+    if index_exists? index, @items
       @items.delete_at(index - 1)
     else
       raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
     end
   end
 
-  def index_exists? index
-    return index < @items.length # Return true if the index is less than the length
+  def index_exists? index, list
+    return index < list.length # Return true if the index is less than the length
   end
 
   # Check if the type exists?

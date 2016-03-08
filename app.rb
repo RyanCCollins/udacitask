@@ -59,6 +59,7 @@ class WebApp < Sinatra::Base
   configure do # Run config to run the app at localhost:80
     set :bind, '0.0.0.0'
     set :port, 1337
+    set :method_override, true
   end
 
   # Get / and load the index template
