@@ -69,7 +69,7 @@ class UdaciList
   def delete item_number
     index = item_number - 1
     if index_exists? index, @items
-      @items.delete_at(index - 1)
+      @items.delete_at(index)
     else
       raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
     end
