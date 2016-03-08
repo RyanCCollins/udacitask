@@ -6,7 +6,7 @@
     </p>
       <form class="actions" action="/<%= item.id %>" method="post">
       <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete %> disabled></label><br>
-        <span><a href="/<%= item.id %>/complete">[check]</a></span>
+        <span><a href="/<%= item.id %>/complete">[<%= "un" if item.complete %>check]</a></span>
         <span><a href="/<%= item.id %>">[edit]</a></span>
       </a>
       </form>

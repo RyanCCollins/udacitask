@@ -11,7 +11,7 @@ module Listable
   end
 
   # Convenience for formatting the description
-  def format_description(description)
+  def format_description description
     "#{description}".ljust(30)
   end
 
@@ -36,9 +36,10 @@ module Listable
     when "low"
       value = " ⇩".blue # Low priority shows blue down arrow
     when nil
-      value = ""
+      value = " " # Return a blank string
     else
       raise UdaciListErrors::InvalidPriorityValue, "Invalid Priority Value: #{priority}"
     end
+    value
   end
 end

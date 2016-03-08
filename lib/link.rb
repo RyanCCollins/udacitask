@@ -13,7 +13,9 @@ class LinkItem
     @site_name ? @site_name : ""
   end
 
+  # Return the link item details formatted
   def details
+    "Link: " +
     format_description(@description) + "site name: " + format_name
   end
 end

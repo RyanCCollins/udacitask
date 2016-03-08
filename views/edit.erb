@@ -2,13 +2,11 @@
   <form action="/<%= @item.id %>" method="post" id="edit">
     <input type="hidden" name="_method" value="put">
     <textarea name="description"><%= @item.description %></textarea>
-    <label for="complete"><%= "Mark Complete" if !@item.complete %><%= "Mark Incomplete" if @item.complete %></label>
-
     <input type="submit">
+    <label for="complete"><%= "Mark Complete" if !@item.complete %><%= "Mark Incomplete" if @item.complete %></label>
     <input type="checkbox" name="complete" <%= "checked" if @item.complete %>>
-    <br>
   </form>
-  <p><a href="/<%= @item.id %>/delete">Delete</a></p>
+  <p><a href="/<%= @item.id %>/delete"><button>Delete</button></a></p>
 <% else %>
   <p>Item not found.</p>
 <% end %>

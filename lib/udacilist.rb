@@ -5,7 +5,7 @@ class UdaciList
   @@all_items = []
 
   def initialize(options={})
-    @title = options[:title] ? options[:title] : "Unknown Title"
+    @title = options[:title] ? options[:title] : "Untitled List"
     @items = []
   end
 
@@ -116,6 +116,8 @@ class UdaciList
     output # Return the output to print (well, put) it
   end
 
+  # Creates a header that matches the length of
+    # The title.
   def header_for_title
     output = "-" * @title.length
   end
