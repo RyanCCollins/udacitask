@@ -12,6 +12,13 @@ In order to get setup with Sinatra, I read the documentation.  I copied a bit of
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+I spent about 8 hours working on this project.  It was a lot of run to get my hands dirty with Sinatra and was worth the time.
+
 2. What was the most rewarding challenge you conquered?
+The most rewarding challenge was building a Sinatra web app!  I mean, if I was able to build this app in about 8 hours, I will be amazed at what I can build once I take the Rails Nanodegree.  I can't wait to start building web apps with Sinatra and Rails.
+
 3. What two additional features did you build? Why?
+I built a Sinatra web interface and also set it up to edit the todo list items through the web interface.  I think it's probably obvious why!  I want to build web apps :)!
+
 4. Where do you still have room to grow?
+I have to learn a bit more about Ruby app architecture and I have to study the best practices.  To be honest, I wasn't sure exactly what the best way to go about setting this app up was.  I knew that I should build partials and have Sinatra render them using erb, but I would like to understand more than that.

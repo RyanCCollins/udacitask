@@ -4,7 +4,6 @@ GEM
     artii (2.1.1)
     chronic (0.10.2)
     colorizer (0.0.2)
-    gemoji (2.1.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -21,7 +20,6 @@ DEPENDENCIES
   artii
   chronic
   colorizer
-  gemoji (~> 2.1)
   sinatra (~> 1.4, >= 1.4.7)
 
 BUNDLED WITH
