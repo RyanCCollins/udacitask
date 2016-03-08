@@ -1,7 +1,7 @@
 Udacitask, Part 1-2
 
 ## Getting Started
-To run this app properly, you are going to want to do things a bit differently to get the Webrick server going.
+To run this app properly, you need to get the web server running.
 
 First, run 
 ```
