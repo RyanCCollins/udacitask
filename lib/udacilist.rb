@@ -43,7 +43,7 @@ class UdaciList
 
   # Convenience for getting all todo items from webapp
   def self.all_todo_items
-    self.all.select { |item| item.is_a? TodoItem }
+    all.select { |item| item.is_a? TodoItem }
   end
 
   # Constructor for building items
