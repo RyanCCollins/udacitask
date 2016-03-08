@@ -85,8 +85,9 @@ class UdaciList
      return @@list_types.include? type
   end
 
+  # Filter by type by selecting items from the list based on type
   def filter filter
-    filter.downcase! # Do what I say!
+    filter.downcase! # downcase the filter item
     case filter
     when "event"
       items = @items.select { |item| item.is_a? EventItem }
@@ -130,6 +131,7 @@ class UdaciList
                   @title + "\n" + header_for_title
   end
 
+  # Will output all the list's items
   def all
     puts header
     puts output_for @items

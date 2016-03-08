@@ -1,3 +1,4 @@
+<!-- Responsible for showing list items -->
 <% @list_items.each_with_index do |item, index| %>
   <article <%= 'class="complete"' if item.complete %>>
     <h1>Item <%= index + 1 %></h1>
