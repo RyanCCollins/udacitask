@@ -1,7 +1,4 @@
-# require 'chronic'
-# require 'colorize'
-# Find a third gem of your choice and add it to your project
-require 'date'
+
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
@@ -50,8 +47,13 @@ new_list.all
 new_list.filter("event")
 
 # For fun, we are playing with sinatra
-# When you start the app, load up sinatra
-# And load the index template
+  # When you start the app, load up sinatra
+  # And load the index template
+  # Note that for the purposes of meeting requirements,
+  # The app functions as it should from the commandline.
+  # To add additional functionality, the web app loads up
+  # the todo items and allows you to alter from the web app.
+  # That said, the web and commandline applications basically exist seperately
 require 'sinatra'
 
 class WebApp < Sinatra::Base
@@ -95,12 +97,17 @@ class WebApp < Sinatra::Base
     erb :delete
   end
 
+  # Get method for completing an item.
+    # Right now, this functionality is disabled due to issues.
+    # You can complete a list by selecting it from the edit view,
+    # But cannot do so from the main view.
   get '/:id/complete' do
     @id = params["id"].to_i
     @item = UdaciList.get_one @id
 
     # Reverse the completion status
     @item.complete = !@item.complete
+    redirect '/'
   end
 
   # Put method for updating an item

@@ -12,7 +12,6 @@ class UdaciList
   # Push a newly constructed item onto the @items array
   def add(type, description, options={})
     type = type.downcase
-
     add_item construct_item(type, description, options)
   end
 
@@ -30,8 +29,9 @@ class UdaciList
 
   # Convenience for deleting from the class list
   def self.delete id
-    item = self.all.select { |item| item.id == id }
-    all.delete item
+    # Call self.all to delete an item from the web app list
+    item_index = self.all.find_index { |item| item.id == id }
+    @@all_items.delete_at item_index
   end
 
   def self.all
@@ -43,6 +43,9 @@ class UdaciList
     self.all.select { |item| item.is_a? TodoItem }
   end
 
+  # Constructor for building items
+    # Takes a type, description and options
+    # and returns an object of that type.
   def construct_item type, description, options
     case type
     when "todo"
@@ -57,7 +60,11 @@ class UdaciList
     end
   end
 
-  def delete index # Deletes an item at the given index
+  # Delete an item by passing in the list item number
+    # will delete the item that matches the item_number - 1
+    # i.e. item number 3 will delete at index 2.
+  def delete item_number
+    index = item_number - 1
     if index_exists? index, @items
       @items.delete_at(index - 1)
     else
@@ -65,6 +72,7 @@ class UdaciList
     end
   end
 
+  # Determine if an index exists in a given list.
   def index_exists? index, list
     return index < list.length # Return true if the index is less than the length
   end
@@ -93,13 +101,16 @@ class UdaciList
   end
 
   def header_for_title
-    output = "-"
+    output = "-" * @title.length
+  end
+
+  def header # Create a header and return it
+    output = header_for_title + "\n" +
+                  @title + "\n" + header_for_title
   end
 
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    puts header
     @items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end

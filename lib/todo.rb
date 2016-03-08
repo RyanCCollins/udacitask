@@ -1,9 +1,12 @@
 require 'chronic'
 
 class TodoItem
+  # Include the listable module
   include Listable
-  attr_writer :description, :complete
-  attr_reader :due, :priority, :id, :description, :complete
+  # attr_accessor and readers for required elements.
+    # description and complete need to be written to by webapp.
+  attr_accessor :description, :complete
+  attr_reader :due, :priority, :id
 
   def initialize(description, options={})
     @id = Listable.get_next_id
@@ -11,7 +14,7 @@ class TodoItem
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]
-    @complete = false
+    @complete = false # Set to false by default when initialized.
   end
 
   def details

@@ -3,12 +3,11 @@
     <h1>Item <%= index + 1 %></h1>
     <p>
       <%= item.description %>
-      <span><a href="/<%= item.id %>">[edit]</a></span>
     </p>
       <form class="actions" action="/<%= item.id %>" method="post">
-      <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete %>>Mark Complete</label><br>
-      <a href="<%= item.id %>/delete">
-        <button type="submit" id="delete-button" type="submit">Delete</button>
+      <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete %> disabled></label><br>
+        <span><a href="/<%= item.id %>/complete">[check]</a></span>
+        <span><a href="/<%= item.id %>">[edit]</a></span>
       </a>
       </form>
     <p class="meta">Due by: <%= item.due != nil ? item.due : "N/A" %></p>
