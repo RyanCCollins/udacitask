@@ -34,7 +34,7 @@ class UdaciList
   def self.delete id
     # Call self.all to delete an item from the web app list
     item_index = self.all.find_index { |item| item.id == id }
-    @@all_items.delete_at item_index
+    all.delete_at item_index
   end
 
   def self.all
