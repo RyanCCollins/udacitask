@@ -2,6 +2,7 @@ class UdaciList
   attr_reader :title, :items
   # Define the list types for easy reference
   @@list_types = ["todo", "event", "link"]
+  @@all_items = []
 
   def initialize(options={})
     @title = options[:title] ? options[:title] : "Unknown Title"
@@ -11,10 +12,15 @@ class UdaciList
   # Push a newly constructed item onto the @items array
   def add(type, description, options={})
     type = type.downcase
-    @items << construct_item(type, description, options)
 
-    # We want to keep track of all list items from this class var for the web app.
-    add_to_all @items
+    add_item construct_item(type, description, options)
+  end
+
+  # Add the item to both the class and instance
+    # Since we want a convenient way to get all items
+  def add_item item
+    @items << item
+    @@all_items << item
   end
 
   # Get one by id from the the list items
@@ -22,21 +28,19 @@ class UdaciList
     all.detect {|item| item.id == id }
   end
 
-  def self.all
-    @@list_items
-  end
-
   # Convenience for deleting from the class list
-  def self.delete index
-    if index_exists? index @@list_items
-      @@list_items.delete_at index
-    else
-      raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
-    end
+  def self.delete id
+    item = self.all.select { |item| item.id == id }
+    all.delete item
   end
 
-  def add_to_all items
-    self.all << items
+  def self.all
+    @@all_items
+  end
+
+  # Convenience for getting all todo items from webapp
+  def self.all_todo_items
+    self.all.select { |item| item.is_a? TodoItem }
   end
 
   def construct_item type, description, options
@@ -101,4 +105,3 @@ class UdaciList
     end
   end
 end
-

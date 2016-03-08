@@ -2,7 +2,8 @@ require 'chronic'
 
 class TodoItem
   include Listable
-  attr_reader :description, :due, :priority, :complete, :id
+  attr_writer :description, :complete
+  attr_reader :due, :priority, :id, :description, :complete
 
   def initialize(description, options={})
     @id = Listable.get_next_id
