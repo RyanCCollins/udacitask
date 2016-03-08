@@ -152,7 +152,7 @@ button {  width: auto; overflow: visible; }
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
-/*Some styling was borrowed from http://code.tutsplus.com/tutorials/singing-with-sinatra--net-18965 since it outlined basically what I wanted this app to do.*/
+/*Some styling was borrowed from http://code.tutsplus.com/tutorials/singing-with-sinatra--net-18965 since it outlined basically what I wanted this app to do. Note that I learned how to do this from this site and utilized some of the styling.*/
 
 body {
   margin: 35px auto;
