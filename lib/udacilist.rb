@@ -98,6 +98,22 @@ class UdaciList
     else
       raise InvalidFilter, "Invalid Filter: #{filter}"
     end
+    # Set the title equal to the filter and output the
+      # Header and items (as long as there are items to put)
+    @title = "Filtered by: " + filter.capitalize
+    puts header
+    puts output_for items if items
+  end
+
+  # Convenience for compiling output for any items passed in
+    # Useful for compiling the output for the app method and
+    # For a filtered list
+  def output_for items
+    output = ""
+    items.each_with_index do |item, position|
+      output += "#{position + 1}) #{item.details}\n"
+    end
+    output # Return the output to print (well, put) it
   end
 
   def header_for_title
@@ -111,8 +127,6 @@ class UdaciList
 
   def all
     puts header
-    @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
-    end
+    puts output_for @items
   end
 end

@@ -44,7 +44,7 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-new_list.filter("event")
+puts new_list.filter("event")
 
 # For fun, we are playing with sinatra
   # When you start the app, load up sinatra
@@ -98,9 +98,6 @@ class WebApp < Sinatra::Base
   end
 
   # Get method for completing an item.
-    # Right now, this functionality is disabled due to issues.
-    # You can complete a list by selecting it from the edit view,
-    # But cannot do so from the main view.
   get '/:id/complete' do
     @id = params["id"].to_i
     @item = UdaciList.get_one @id
