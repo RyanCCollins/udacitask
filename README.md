@@ -7,7 +7,9 @@ First, run
 ```
 bundle install
 ```
-in order to install all of the dependencies.  Note: the app was created using Ruby v. 2.2.1p85.  If you have any issues, trying using rvm with that version. [See here](https://rvm.io/) for more details.
+in order to install all of the dependencies.  
+
+Note: the app was created using Ruby v. 2.2.1p85.  If you have any issues, trying using rvm with that version. [See here](https://rvm.io/) for more details.
 
 From the commandline, run the following from the root directory 
 ```

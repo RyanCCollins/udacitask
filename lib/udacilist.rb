@@ -16,7 +16,10 @@ class UdaciList
   end
 
   # Add the item to both the class and instance
-    # Since we want a convenient way to get all items
+    # Since we want a convenient way to get all items from the webapp
+    # Realistically, we would elimate this and use the .filter method
+    # To get lists, but for the purposes of this project,
+    # We are utilizing two seperate arrays at instance and class levels.
   def add_item item
     @items << item
     @@all_items << item
@@ -106,7 +109,7 @@ class UdaciList
   end
 
   # Convenience for compiling output for any items passed in
-    # Useful for compiling the output for the app method and
+    # Useful for compiling the output for the all method and
     # For a filtered list
   def output_for items
     output = ""

@@ -1,13 +1,12 @@
-
+# Load in all of the files needed for the app
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
 require_relative "lib/todo"
 require_relative "lib/event"
 require_relative "lib/link"
-# myapp.rb
 
-
+# Create a list and add items.
 list = UdaciList.new(title: "Julia's Stuff")
 list.add("todo", "Buy more cat food", due: "2016-02-03", priority: "low")
 list.add("todo", "Sweep floors", due: "2016-01-30")

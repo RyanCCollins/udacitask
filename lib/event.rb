@@ -10,7 +10,7 @@ class EventItem
   end
 
   def details
-    "Event: " + # I may have misunderstood the specs, but it says to print the type.
+    "Event: " + # I may have misunderstood the specs, but it says to print the item type.
     format_description(@description) + "event dates: " + format_date(start_date:@start_date, end_date: @end_date)
   end
 end
