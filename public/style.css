@@ -35,7 +35,7 @@ time, mark, audio, video {
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-      display:block;
+  display:block;
 }
 
 blockquote, q { quotes:none; }
@@ -159,6 +159,7 @@ body {
 
 header {
   text-align: center;
+  font-size: 20px;
   margin: 0 0 40px;
 }
 
@@ -179,21 +180,6 @@ header h2 {
 
 #add {
   margin: 0 0 20px;
-}
-
-#add textarea {
-  height: 30px;
-  width: 510px;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-#add input {
-  height: 50px;
-  width: 100px;
-  margin: -50px 0 0;
-  border: 1px solid #ddd;
-  background: white;
 }
 
 #edit textarea {
@@ -217,13 +203,13 @@ header h2 {
 }
 
 article {
-  border: 1px solid #eee;
+  border: 2px solid #eee;
   border-top: none;
   padding: 15px 10px;
 }
 
 article:first-of-type {
-  border: 1px solid #eee;
+  border: 2px solid #eee;
 }
 
 article:nth-child(even) {
@@ -242,11 +228,7 @@ p {
   margin: 0 0 5px;
 }
 
-.delete-button {
-  margin-top:5px;
-}
-
-.meta {
+.meta-information {
   font-size: 0.8em;
   font-style: italic;
   color: #888;
