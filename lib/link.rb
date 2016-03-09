@@ -4,9 +4,11 @@ class LinkItem
   include Listable
   attr_reader :description, :site_name, :id
 
+  # Class variable for the type of list
+  @@type = "link"
+
   def initialize(url, options={})
     @id = Listable.get_next_id
-    @type = "link"
     @description = url
     @site_name = options[:site_name]
   end
@@ -19,7 +21,7 @@ class LinkItem
   # Return the link item details formatted
   def details
     # Print the type of item
-    "#{@type.capitalize}: " +
+    "#{@@type.capitalize}: " +
     format_description(@description) + "site name: " + format_name
   end
 end

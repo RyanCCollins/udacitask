@@ -5,6 +5,9 @@ class TodoItem
   # Include the listable module
   include Listable
 
+  # Class variable for the type of list
+  @@type = "todo"
+
   # attr_accessor and readers for required elements.
     # description needs to be written to by webapp.
   attr_accessor :description
@@ -13,7 +16,6 @@ class TodoItem
   # Standard initialize method
   def initialize(description, options={})
     @id = Listable.get_next_id # Get the next id from the listable module
-    @type = "todo"
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]
@@ -32,7 +34,7 @@ class TodoItem
 
   def details
     # Print the type of item
-    "#{@type.capitalize}: " +
+    "#{@@type.capitalize}: " +
     format_description(@description) + "due: " + format_date(start_date: @due) +
     format_priority(@priority)
   end
