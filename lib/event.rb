@@ -4,7 +4,7 @@ require 'chronic'
 # Class EventItem is another class that stores data for a list item, albeit for events
 class EventItem
   include Listable
-  attr_reader :description, :start_date, :end_date, :id, :type
+  attr_reader :description, :start_date, :end_date, :id
 
   # Class variable for the type of list
   @@type = "event"

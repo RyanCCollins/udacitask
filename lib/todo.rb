@@ -11,7 +11,7 @@ class TodoItem
   # attr_accessor and readers for required elements.
     # description needs to be written to by webapp.
   attr_accessor :description
-  attr_reader :due, :priority, :id, :type
+  attr_reader :due, :priority, :id
 
   # Standard initialize method
   def initialize(description, options={})
