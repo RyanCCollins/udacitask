@@ -43,7 +43,7 @@ new_list.all
 
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
-new_list.filter("event")
+#new_list.filter "event"
 
 # For fun, we are playing with sinatra
   # When you start the app, load up sinatra

@@ -14,7 +14,7 @@ class UdaciList
     @items = []
   end
 
-  # Push a newly constructed item onto the @items array
+  # Push a newly constructed item onto the class and instance items array
   def add(type, description, options={})
     type = type.downcase
     add_item construct_item(type, description, options)
@@ -38,7 +38,7 @@ class UdaciList
   # Convenience for deleting from the class list (will not delete from instance list)
   def self.delete id
     # Call self.all to delete an item from the web app list
-    item_index = self.all.find_index { |item| item.id == id }
+    item_index = all.find_index { |item| item.id == id }
     all.delete_at item_index
   end
 
@@ -57,7 +57,7 @@ class UdaciList
   def construct_item type, description, options
     type = type.downcase
     if type_allowed? type
-      # Add the item to the list by calling the
+      # Create and return a new item of the type passed in
       @@list_types[type.to_sym].new(description, options)
     else
       # Raise the invalid item type error if the type does not exist
@@ -73,7 +73,7 @@ class UdaciList
     if index_exists? index, @items
       @items.delete_at index
     else
-      raise UdaciListErrors::IndexExceedsListSize, "The index #:#{index} does not exist in the UdaciList list (list length: #{@items.length})"
+      raise UdaciListErrors::IndexExceedsListSize, "List item #{index + 1} does not exist in the UdaciList list"
     end
   end
 
@@ -84,18 +84,17 @@ class UdaciList
 
   # Check if the type exists?
   def type_allowed? type # Will check if the type is included in the list_types hash
-    return @@list_types.keys.include? type.to_sym
+    return @@list_types.keys.include?(type.to_sym)
   end
 
   # Filter by type by selecting items from the list based on type
-  def filter filter
-    filter.downcase! # downcase the filter item
-    type = @@list_types[filter.to_sym]
-    if type
-      @items.select { |item| item.is_a? type }
+  def filter type
+    if type_allowed?(type.downcase) # Downcase the filter type and check if it's allowed (exists in lists)
+      list_type = @@list_types[type.downcase.to_sym]
+      @items.select { |item| item.is_a? list_type }
       # Set the title equal to the filter and output the
         # Header and items (as long as there are items to put)
-      @title = "Filtered by: " + filter.capitalize
+      @title = "Filtered by: " + type.capitalize
       puts header
       puts output_for items if items
     else
