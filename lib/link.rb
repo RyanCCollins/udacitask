@@ -6,6 +6,7 @@ class LinkItem
 
   def initialize(url, options={})
     @id = Listable.get_next_id
+    @type = "link"
     @description = url
     @site_name = options[:site_name]
   end
@@ -17,7 +18,8 @@ class LinkItem
 
   # Return the link item details formatted
   def details
-    "Link: " +
+    # Print the type of item
+    "#{@type.capitalize}: " +
     format_description(@description) + "site name: " + format_name
   end
 end

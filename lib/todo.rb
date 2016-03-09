@@ -13,7 +13,7 @@ class TodoItem
   # Standard initialize method
   def initialize(description, options={})
     @id = Listable.get_next_id # Get the next id from the listable module
-    #@title = options[:title] ? options[:title] : "N/A"
+    @type = "todo"
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]
@@ -31,9 +31,9 @@ class TodoItem
   end
 
   def details
-    "Todo: " +
-    format_description(@description) + "due: " +
-    format_date(start_date: @due) +
+    # Print the type of item
+    "#{@type.capitalize}: " +
+    format_description(@description) + "due: " + format_date(start_date: @due) +
     format_priority(@priority)
   end
 end
