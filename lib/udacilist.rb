@@ -1,3 +1,8 @@
+# Loading the types so that we can use their names to build items
+require_relative 'todo'
+require_relative 'link'
+require_relative 'event'
+
 class UdaciList
   attr_reader :title, :items
   # Define the list types for easy reference
@@ -21,6 +26,7 @@ class UdaciList
     # To get lists, but for the purposes of this project,
     # We are utilizing two seperate arrays at instance and class levels.
   def add_item item
+    puts "Creating item: #{item}"
     @items << item
     @@all_items << item
   end
@@ -53,7 +59,7 @@ class UdaciList
     type = type.downcase
     if type_allowed? type
       # Add the item to the list by calling the
-      add_item @@list_types[type.to_sym].new description options
+      @@list_types[type.to_sym].new(description, options)
     else
       # Raise the invalid item type error if the type does not exist
       raise UdaciListErrors::InvalidItemType if !type_exists? type
@@ -78,32 +84,38 @@ class UdaciList
   end
 
   # Check if the type exists?
-  def type_allowed? type
+  def type_allowed? type # Will check if the type is included in the list_types hash
     return @@list_types.keys.include? type.to_sym
   end
 
   # Filter by type by selecting items from the list based on type
   def filter filter
     filter.downcase! # downcase the filter item
-    case filter
-    when "event"
-      items = @items.select { |item| item.is_a? EventItem }
-    when "todo"
-      items = @items.select { |item| item.is_a? TodoItem }
-    when "link"
-      items = @items.select { |item| item.is_a? LinkItem }
-    when "complete" # Check for completion
-      items = @items.select { |item| item.respond_to?(:is_complete?) && item.is_complete? }
-    when "incomplete"
-      items = @items.select { |item| item.respond_to?(:is_complete?) && !item.is_complete? }
+    type = @@list_types[filter.to_sym]
+    if type
+      @items.select { |item| item.is_a? type }
+      # Set the title equal to the filter and output the
+        # Header and items (as long as there are items to put)
+      @title = "Filtered by: " + filter.capitalize
+      puts header
+      puts output_for items if items
     else
       raise InvalidFilter, "Invalid Filter: #{filter}"
     end
-    # Set the title equal to the filter and output the
-      # Header and items (as long as there are items to put)
-    @title = "Filtered by: " + filter.capitalize
-    puts header
-    puts output_for items if items
+    # case filter
+    # when "event"
+    #   items = @items.select { |item| item.is_a? EventItem }
+    # when "todo"
+    #   items = @items.select { |item| item.is_a? TodoItem }
+    # when "link"
+    #   items = @items.select { |item| item.is_a? LinkItem }
+    # when "complete" # Check for completion
+    #   items = @items.select { |item| item.respond_to?(:is_complete?) && item.is_complete? }
+    # when "incomplete"
+    #   items = @items.select { |item| item.respond_to?(:is_complete?) && !item.is_complete? }
+    # else
+    #   raise InvalidFilter, "Invalid Filter: #{filter}"
+    # end
   end
 
   # Convenience for compiling output for any items passed in

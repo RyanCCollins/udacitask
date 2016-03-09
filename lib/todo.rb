@@ -1,16 +1,19 @@
 require 'chronic'
 
+# Class TodoItem is another class that stores data for a list item, albeit for todos
 class TodoItem
   # Include the listable module
   include Listable
+
   # attr_accessor and readers for required elements.
-    # description and complete need to be written to by webapp.
+    # description needs to be written to by webapp.
   attr_accessor :description
   attr_reader :due, :priority, :id
 
+  # Standard initialize method
   def initialize(description, options={})
-    @id = Listable.get_next_id
-    @title = options[:title] ? options[:title] : "N/A"
+    @id = Listable.get_next_id # Get the next id from the listable module
+    #@title = options[:title] ? options[:title] : "N/A"
     @description = description
     @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]

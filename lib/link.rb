@@ -1,3 +1,5 @@
+
+# Class LinkItem is another class that stores data for a list item, albeit for links
 class LinkItem
   include Listable
   attr_reader :description, :site_name, :id
