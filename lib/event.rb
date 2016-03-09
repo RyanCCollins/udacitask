@@ -4,7 +4,7 @@ require 'chronic'
 # Class EventItem is another class that stores data for a list item, albeit for events
 class EventItem
   include Listable
-  attr_reader :description, :start_date, :end_date, :id
+  attr_reader :description, :start_date, :end_date, :id, :type
 
   # Class variable for the type of list
   @@type = "event"
@@ -16,9 +16,14 @@ class EventItem
     @end_date = Chronic.parse(options[:end_date]) if options[:end_date]
   end
 
+  # Return the type variable for getting type
+    # from an item's instance
+  def type
+    @@type
+  end
+
+  # Print out the items details
   def details
-    # Print the type of item
-    "#{@@type.capitalize} :" +
     format_description(@description) + "event dates: " + format_date(start_date:@start_date, end_date: @end_date)
   end
 end

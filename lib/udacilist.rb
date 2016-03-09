@@ -108,7 +108,7 @@ class UdaciList
   def output_for items
     output = ""
     items.each_with_index do |item, position|
-      output += "#{position + 1}) #{item.details}\n"
+      output += "#{position + 1}) #{item.type.capitalize}: #{item.details}\n"
     end
     output # Return the output to print (well, put) it
   end

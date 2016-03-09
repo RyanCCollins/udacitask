@@ -11,7 +11,7 @@ class TodoItem
   # attr_accessor and readers for required elements.
     # description needs to be written to by webapp.
   attr_accessor :description
-  attr_reader :due, :priority, :id
+  attr_reader :due, :priority, :id, :type
 
   # Standard initialize method
   def initialize(description, options={})
@@ -27,14 +27,18 @@ class TodoItem
     @complete = status
   end
 
+  # Return the type class variable for getting type
+    # from an item's instance
+  def type
+    @@type
+  end
+
   # Convenience for checking if the item is complete.
   def complete?
     return @complete
   end
 
   def details
-    # Print the type of item
-    "#{@@type.capitalize}: " +
     format_description(@description) + "due: " + format_date(start_date: @due) +
     format_priority(@priority)
   end
