@@ -18,7 +18,6 @@ list.all
 list.delete(3)
 list.all
 
-
 # SHOULD CREATE AN UNTITLED LIST AND ADD ITEMS TO IT
 # --------------------------------------------------
 new_list = UdaciList.new # Should create a list called "Untitled List"
@@ -36,6 +35,7 @@ new_list.add("link", "http://ruby-doc.org")
 #new_list.add("image", "http://ruby-doc.org") # Throws InvalidItemType error
 #new_list.delete(9) # Throws an IndexExceedsListSize error
 #new_list.add("todo", "Hack some portals", priority: "super high") # throws an InvalidPriorityValue error
+#new_list.filter("apples") # Throws an InvalidFilter error (I added this!)
 
 # DISPLAY UNTITLED LIST
 # ---------------------
@@ -111,9 +111,8 @@ class WebApp < Sinatra::Base
   get '/:id/complete' do
     @id = params["id"].to_i
     @item = UdaciList.get_one @id
-
     # Reverse the completion status
-    @item.complete = !@item.complete
+    @item.toggle_completion !@item.complete? # Set the completion status by flipping it
     redirect '/'
   end
 
@@ -122,7 +121,7 @@ class WebApp < Sinatra::Base
     @id = params["id"].to_i
     @item = UdaciList.get_one @id
     @item.description = params["description"]
-    @item.complete = params["complete"]
+    @item.toggle_completion params["complete"]
     redirect '/'
   end
 

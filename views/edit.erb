@@ -4,7 +4,7 @@
     <textarea name="description"><%= h @item.description %></textarea>
     <input type="submit">
     <label for="complete"><%= "Mark Complete" if !@item.complete? %><%= "Mark Incomplete" if @item.complete? %></label>
-    <input type="checkbox" name="complete" <%= "checked" if @item.complete %>>
+    <input type="checkbox" name="complete" <%= "checked" if @item.complete? %>>
   </form>
   <p><a href="/<%= @item.id %>/delete"><button>Delete</button></a></p>
 <% else %>

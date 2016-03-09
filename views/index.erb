@@ -5,7 +5,7 @@
     <p><%= h item.description %></p>
       <form class="right-section" action="/<%= item.id %>" method="post">
       <label><input type="checkbox" id="cbox1" value="first_checkbox" <%= "checked" if item.complete? %> disabled></label><br>
-        <span><a href="/<%= item.id %>/complete">[<%= "un" if item.complete? %>check]</a></span><br>
+        <span><a href="/<%= item.id %>/complete"><input type="hidden" method="post">[<%= "un" if item.complete? %>check]</a></span><br>
         <span><a href="/<%= item.id %>">[edit]</a></span>
       </a>
       </form>

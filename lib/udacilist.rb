@@ -26,7 +26,6 @@ class UdaciList
     # To get lists, but for the purposes of this project,
     # We are utilizing two seperate arrays at instance and class levels.
   def add_item item
-    puts "Creating item: #{item}"
     @items << item
     @@all_items << item
   end
@@ -36,7 +35,7 @@ class UdaciList
     all.detect {|item| item.id == id }
   end
 
-  # Convenience for deleting from the class list
+  # Convenience for deleting from the class list (will not delete from instance list)
   def self.delete id
     # Call self.all to delete an item from the web app list
     item_index = self.all.find_index { |item| item.id == id }
@@ -62,7 +61,7 @@ class UdaciList
       @@list_types[type.to_sym].new(description, options)
     else
       # Raise the invalid item type error if the type does not exist
-      raise UdaciListErrors::InvalidItemType if !type_exists? type
+      raise UdaciListErrors::InvalidItemType if !type_allowed? type
     end
   end
 
@@ -102,20 +101,6 @@ class UdaciList
     else
       raise InvalidFilter, "Invalid Filter: #{filter}"
     end
-    # case filter
-    # when "event"
-    #   items = @items.select { |item| item.is_a? EventItem }
-    # when "todo"
-    #   items = @items.select { |item| item.is_a? TodoItem }
-    # when "link"
-    #   items = @items.select { |item| item.is_a? LinkItem }
-    # when "complete" # Check for completion
-    #   items = @items.select { |item| item.respond_to?(:is_complete?) && item.is_complete? }
-    # when "incomplete"
-    #   items = @items.select { |item| item.respond_to?(:is_complete?) && !item.is_complete? }
-    # else
-    #   raise InvalidFilter, "Invalid Filter: #{filter}"
-    # end
   end
 
   # Convenience for compiling output for any items passed in
